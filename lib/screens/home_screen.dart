@@ -17,17 +17,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // floatingActionButton: Padding(
-      //   padding: const EdgeInsets.all(20),
-      //   child: FloatingActionButton(
-      //     onPressed: () {},
-      //     backgroundColor: specialColor,
-      //     child: FaIcon(
-      //       FontAwesomeIcons.message,
-      //       color: primaryColor,
-      //     ),
-      //   ),
-      // ),
       body: Container(
         height: context.height(),
         width: context.width(),

@@ -45,14 +45,22 @@ class TTS extends ChangeNotifier {
       toast("Unable to generate speech");
     }
 
-    getSpeech();
+    Navigator.of(ctx).pop();
   }
 
   Map<String, String> Gheader = {
     "Accept": "application/json",
   };
 
-  Future<void> getSpeech() async {
+  Future<void> getSpeech(BuildContext ctx) async {
+    showDialog(
+        context: ctx,
+        builder: (ctx) {
+          return CircularProgressIndicator(
+            color: specialColor,
+          ).center();
+        });
+
     while (true) {
       var get = await http.get(
         Uri.parse(getURL + getEndPoint),
@@ -74,5 +82,7 @@ class TTS extends ChangeNotifier {
         break;
       }
     }
+
+    Navigator.of(ctx).pop();
   }
 }

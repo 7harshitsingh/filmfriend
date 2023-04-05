@@ -20,8 +20,12 @@ Widget mainContainer(Character ch, BuildContext ctx) {
         Provider.of<TTS>(ctx, listen: false)
             .sendRequest(ch.token, Uuid().v4(),
                 Provider.of<GPT3>(ctx, listen: false).resText, ctx)
-            .then((value) {
-          CharacterScreen(ic: ch).launch(ctx);
+            .then((val) {
+          Provider.of<TTS>(ctx, listen: false).getSpeech(ctx).then((value) {
+            CharacterScreen(
+              ic: ch,
+            ).launch(ctx);
+          });
         });
       });
     },

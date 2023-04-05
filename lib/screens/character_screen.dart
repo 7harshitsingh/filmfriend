@@ -225,12 +225,16 @@ class _CharacterScreenState extends State<CharacterScreen> {
                                                 .resText,
                                             context)
                                         .then((value) {
-                                      ResponseScreen(
-                                              resText: Provider.of<GPT3>(
-                                                      context,
-                                                      listen: false)
-                                                  .resText)
-                                          .launch(context);
+                                      Provider.of<TTS>(context, listen: false)
+                                          .getSpeech(context)
+                                          .then((value) {
+                                        ResponseScreen(
+                                                resText: Provider.of<GPT3>(
+                                                        context,
+                                                        listen: false)
+                                                    .resText)
+                                            .launch(context);
+                                      });
                                     });
                                   })
                                 : toast("Please ask something to $chrName");

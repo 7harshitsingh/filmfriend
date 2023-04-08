@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flimfriend/model/character_model.dart';
 import 'package:flimfriend/utils/app_theme.dart';
 import 'package:flimfriend/utils/default_data.dart';
@@ -16,6 +17,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final firebaseUser = FirebaseAuth.instance.currentUser!;
+
     return Scaffold(
       body: Container(
         height: context.height(),
@@ -60,17 +64,22 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Container(
-                      height: 44,
-                      width: 44,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          border: Border.all(
-                              color: textColor.withOpacity(0.7), width: 1.5)),
-                      child: CachedNetworkImage(
-                        imageUrl: "https://image.lexica.art/full_jpg/f1f9e42f-97d1-4860-8e7c-859fcb6b581a",
-                        fit: BoxFit.cover,
-                      ).cornerRadiusWithClipRRect(100)
+                    InkWell(
+                      onTap: () {
+                        //TODO : Create profile page
+                      },
+                      child: Container(
+                        height: 44,
+                        width: 44,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            border: Border.all(
+                                color: textColor.withOpacity(0.7), width: 1.5)),
+                        child: CachedNetworkImage(
+                          imageUrl: firebaseUser.photoURL!,
+                          fit: BoxFit.cover,
+                        ).cornerRadiusWithClipRRect(100)
+                      ),
                     )
                   ]).paddingSymmetric(horizontal: 32, vertical: 32),
               //mainContainer(charactersList()[0], context)

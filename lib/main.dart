@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flimfriend/logic/authcheck.dart';
 import 'package:flimfriend/logic/fakeyou_tts.dart';
-import 'package:flimfriend/logic/fetch_details.dart';
+import 'package:flimfriend/logic/details.dart';
 import 'package:flimfriend/logic/gpt3.dart';
 import 'package:flimfriend/screens/get_started_screen.dart';
 import 'package:flimfriend/screens/splash_screen.dart';
@@ -18,7 +18,7 @@ void main() async {
   await Firebase.initializeApp();
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider(create: (_) => FetchDetails()),
+      ChangeNotifierProvider(create: (_) => Details()),
       ChangeNotifierProvider(create: (_) => GPT3()),
       ChangeNotifierProvider(create: (_) => TTS()),
       ChangeNotifierProvider(create: (_) => AuthCheck()),

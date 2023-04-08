@@ -4,6 +4,8 @@ import 'package:flimfriend/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:provider/provider.dart';
+import '../logic/details.dart';
+import '../logic/gpt3.dart';
 import '../utils/colors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,6 +18,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
+    APIkey = Provider.of<Details>(context, listen: false).getAPI;
     Provider.of<AuthCheck>(context, listen: false).checkIsItFirstTime();
     super.initState();
   }

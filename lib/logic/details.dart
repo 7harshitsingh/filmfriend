@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class FetchDetails extends ChangeNotifier {
+class Details extends ChangeNotifier {
   final firebaseUser = FirebaseAuth.instance.currentUser;
 
   Future<void> post(String key) async {

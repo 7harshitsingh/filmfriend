@@ -93,6 +93,16 @@ class HomeScreen extends StatelessWidget {
                 },
                 itemCount: list_.length,
               ),
+              16.height,
+              Text(
+                "Due to financials constraints, we currently dependent on free APIs from the providers. So, Please maintain patience",
+                maxLines: 2,
+                style: secondaryTextStyle(
+                    color: textColor,
+                    size: 10,
+                    weight: FontWeight.w400,
+                    fontStyle: FontStyle.italic),
+              ).paddingSymmetric(horizontal: 20),
               64.height,
             ],
           ),

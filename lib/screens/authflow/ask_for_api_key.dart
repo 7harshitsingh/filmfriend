@@ -39,79 +39,80 @@ class _AskforAPIState extends State<AskforAPI> {
             end: Alignment.bottomCenter,
           ),
         ),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              60.height,
-              Text(
-                "Paste your OpenAI API key >>>",
-                style: boldTextStyle(color: Colors.white, size: 32),
-              ),
-              18.height,
-              TextField(
-                maxLines: 3,
-                style: primaryTextStyle(color: specialColor, size: 13),
-                controller: apiController,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(
-                      color: specialColor,
-                      width: 2,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 2,
-                    ),
-                  ),
-                  hintText: "Enter APIKey here",
-                  hintStyle: primaryTextStyle(
-                      color: Colors.white.withOpacity(0.7), size: 14),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                60.height,
+                Text(
+                  "Paste your OpenAI API key >>>",
+                  style: boldTextStyle(color: Colors.white, size: 30),
                 ),
-              ),
-              SizedBox(
-                height: context.height() * 0.5,
-              ),
-              InkWell(
-                onTap: () {
-                  APIkey = apiController.text.toString();
-                  Provider.of<GPT3>(context, listen: false)
-                      .send("system", "Give a welcome greeting in one sentence",
-                          context)
-                      .then(
-                    (value) {
-                      bool check =
-                          Provider.of<GPT3>(context, listen: false).confirm;
-                      check
-                          ? ConfirmAPI(
-                              k: apiController.text,
-                              check: check,
-                            ).launch(context, isNewTask: true)
-                          : ConfirmAPI(
-                              k: apiController.text,
-                              check: check,
-                            ).launch(context);
-                    },
-                  );
-                },
-                child: Container(
-                  height: 44,
-                  width: context.width(),
-                  color: specialColor,
-                  child: Text(
-                    "Submit >>>",
-                    style: boldTextStyle(color: primaryColorDark, size: 22),
-                  ).center(),
-                ).cornerRadiusWithClipRRect(50),
-              ),
-            ],
-          ).paddingSymmetric(horizontal: 20, vertical: 28),
-        ),
+                18.height,
+                TextField(
+                  maxLines: 3,
+                  style: primaryTextStyle(color: specialColor, size: 13),
+                  controller: apiController,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(
+                        color: specialColor,
+                        width: 2,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(
+                        color: Colors.white,
+                        width: 2,
+                      ),
+                    ),
+                    hintText: "Enter APIKey here",
+                    hintStyle: primaryTextStyle(
+                        color: Colors.white.withOpacity(0.7), size: 14),
+                  ),
+                ),
+              ],
+            ),
+            InkWell(
+              onTap: () {
+                APIkey = apiController.text.toString();
+                Provider.of<GPT3>(context, listen: false)
+                    .send("system", "Give a welcome greeting in one sentence",
+                        context)
+                    .then(
+                  (value) {
+                    bool check =
+                        Provider.of<GPT3>(context, listen: false).confirm;
+                    check
+                        ? ConfirmAPI(
+                            k: apiController.text,
+                            check: check,
+                          ).launch(context, isNewTask: true)
+                        : ConfirmAPI(
+                            k: apiController.text,
+                            check: check,
+                          ).launch(context);
+                  },
+                );
+              },
+              child: Container(
+                height: 44,
+                width: context.width(),
+                color: specialColor,
+                child: Text(
+                  "Submit >>>",
+                  style: boldTextStyle(color: primaryColorDark, size: 22),
+                ).center(),
+              ).cornerRadiusWithClipRRect(50),
+            ),
+          ],
+        ).paddingSymmetric(horizontal: 20, vertical: 28),
       ),
     );
   }

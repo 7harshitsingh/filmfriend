@@ -5,8 +5,6 @@ import 'package:http/http.dart' as http;
 import 'package:nb_utils/nb_utils.dart';
 
 String APIkey = "";
-String ErrorMessage =
-    "You exceeded your current quota, please check your plan and billing details at OpenAI. Buy premium or get APIKey from another account ";
 
 class GPT3 extends ChangeNotifier {
   String resText = "";
@@ -48,13 +46,12 @@ class GPT3 extends ChangeNotifier {
       resText = message["content"].toString();
       list.add({"role": "assistant", "content": resText});
     } else if (res.statusCode == 401) {
-      print(res.body.toString());
-      print(APIkey);
       resText = ch['error']['message'].toString();
-    } else {
-      print(res.body.toString());
-      print(res.statusCode);
-      resText = ErrorMessage;
+    } else if (res.statusCode == 429) {
+      confirm = true;
+      resText = ch['error']['message'].toString();
+    }else {
+      resText = res.statusCode.toString() + "Status Error";
     }
 
     Navigator.of(ctx).pop();

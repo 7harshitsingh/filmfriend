@@ -15,7 +15,7 @@ Widget mainContainer(Character ch, BuildContext ctx) {
   return InkWell(
     onTap: () {
       Provider.of<GPT3>(ctx, listen: false)
-          .send("system", "Respond to this chat like $chrName", ctx)
+          .send("system", "Respond to this chat like $chrName and each response should be in 50 words", ctx)
           .then((value) {
         Provider.of<TTS>(ctx, listen: false)
             .sendRequest(ch.token, Uuid().v4(),
@@ -58,9 +58,9 @@ Widget mainContainer(Character ch, BuildContext ctx) {
                             size: 18,
                             weight: FontWeight.w800,
                             fontFamily:
-                                GoogleFonts.cedarvilleCursive().fontFamily),
+                                GoogleFonts.workSans().fontFamily),
                       ),
-                      //12.height,
+                      6.height,
                       Text(
                         ch.desc,
                         overflow: TextOverflow.ellipsis,

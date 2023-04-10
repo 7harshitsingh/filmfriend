@@ -255,7 +255,44 @@ class _CharacterScreenState extends State<CharacterScreen> {
                 ).paddingAll(16),
               )
                   .cornerRadiusWithClipRRect(24)
-                  .paddingSymmetric(vertical: 24, horizontal: 20),
+                  .paddingSymmetric(vertical: 20, horizontal: 20),
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      primaryColorDark.withOpacity(0.6),
+                      primaryColorDark.withOpacity(0.3),
+                    ],
+                    begin: AlignmentDirectional.topStart,
+                    end: AlignmentDirectional.bottomEnd,
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  border: Border.all(
+                    width: 1.5,
+                    color: Colors.white.withOpacity(0.2),
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Try Outs >>>',
+                      style: primaryTextStyle(
+                          size: 18,
+                          weight: FontWeight.bold,
+                          color: Colors.white.withOpacity(0.7)),
+                    ),
+                    8.height,
+                    Wrap(
+                      alignment: WrapAlignment.start,
+                      children: widget.ic.ques.asMap().entries.map((e) {
+                        return Text("Q. " + e.value.toString(), style: primaryTextStyle(color: textColor.withOpacity(0.7), size: 13),);
+                      }).toList(),
+                    )
+                  ],
+                ).paddingAll(16),
+              ).paddingSymmetric(horizontal: 20),
               60.height,
             ],
           ),

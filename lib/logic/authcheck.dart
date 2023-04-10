@@ -30,7 +30,7 @@ class AuthCheck extends ChangeNotifier {
         .collection('controller')
         .doc(firebaseUser!.uid);
     final json = {'isitfirsttime': false};
-    await controller.set(json);
+    await controller.set(json, SetOptions(merge: true));
     checkIsItFirstTime();
   }
 }

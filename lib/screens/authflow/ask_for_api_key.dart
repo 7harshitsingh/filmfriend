@@ -77,6 +77,16 @@ class _AskforAPIState extends State<AskforAPI> {
                         color: Colors.white.withOpacity(0.7), size: 14),
                   ),
                 ),
+                10.height,
+                Text(
+                "Don't worry, Your APIkey is end to end encrypted",
+                maxLines: 2,
+                style: secondaryTextStyle(
+                    color: textColor.withOpacity(0.7),
+                    size: 10,
+                    weight: FontWeight.w400,
+                    fontStyle: FontStyle.italic),
+              ),
               ],
             ),
             InkWell(

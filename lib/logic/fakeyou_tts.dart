@@ -2,10 +2,13 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:nb_utils/nb_utils.dart';
 
 import '../utils/colors.dart';
+
+String refreshToken = "";
 
 class TTS extends ChangeNotifier {
   String postURL = "https://api.fakeyou.com/tts/inference";
@@ -16,7 +19,8 @@ class TTS extends ChangeNotifier {
 
   Map<String, String> Pheader = {
     "Accept": "application/json",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "cookie": "$refreshToken"
   };
 
   Future<void> sendRequest(
@@ -84,5 +88,25 @@ class TTS extends ChangeNotifier {
     }
 
     Navigator.of(ctx).pop();
+  }
+
+  String loginURL = "https://api.fakeyou.com/login";
+
+  Map<String, String> Loginheader = {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  };
+
+  Future<void> login() async {
+    var req = await http.post(Uri.parse(loginURL),
+        headers: Loginheader,
+        body: jsonEncode({
+          "username_or_email": dotenv.env['USERNAME'].toString(),
+          "password": dotenv.env['PASSWORD'].toString()
+        }));
+
+    refreshToken = req.headers['set-cookie']!;
+    // int index = rawCookie.indexOf(';');
+    // refreshToken = (index == -1) ? rawCookie : rawCookie.substring(0, index);
   }
 }

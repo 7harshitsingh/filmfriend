@@ -8,6 +8,7 @@ import 'package:flimfriend/screens/get_started_screen.dart';
 import 'package:flimfriend/screens/splash_screen.dart';
 import 'package:flimfriend/utils/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +17,7 @@ import 'logic/google_sign_in.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await dotenv.load(fileName: "lib/.env");
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => Details()),

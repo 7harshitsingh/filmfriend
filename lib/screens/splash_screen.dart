@@ -1,4 +1,5 @@
 import 'package:flimfriend/logic/authcheck.dart';
+import 'package:flimfriend/logic/fakeyou_tts.dart';
 import 'package:flimfriend/screens/authflow/ask_for_api_key.dart';
 import 'package:flimfriend/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,10 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    APIkey = Provider.of<Details>(context, listen: false).getAPI;
+    Provider.of<TTS>(context, listen: false).login();
+    Provider.of<Details>(context, listen: false).get().then((value) {
+      APIkey = Provider.of<Details>(context, listen: false).getAPI;
+    });
     Provider.of<AuthCheck>(context, listen: false).checkIsItFirstTime();
     super.initState();
   }

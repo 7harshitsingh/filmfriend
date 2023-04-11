@@ -60,8 +60,8 @@ class _CharacterScreenState extends State<CharacterScreen> {
   void _startListening() async {
     await _speechToText.listen(
       onResult: _onSpeechResult,
-      listenFor: Duration(seconds: 10),
     );
+    print("started listening");
     setState(() {});
   }
 
@@ -287,7 +287,11 @@ class _CharacterScreenState extends State<CharacterScreen> {
                     Wrap(
                       alignment: WrapAlignment.start,
                       children: widget.ic.ques.asMap().entries.map((e) {
-                        return Text("Q. " + e.value.toString(), style: primaryTextStyle(color: textColor.withOpacity(0.7), size: 13),);
+                        return Text(
+                          "Q. " + e.value.toString(),
+                          style: primaryTextStyle(
+                              color: textColor.withOpacity(0.7), size: 13),
+                        );
                       }).toList(),
                     )
                   ],

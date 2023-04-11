@@ -44,6 +44,7 @@ class TTS extends ChangeNotifier {
     if (req.statusCode == 200) {
       var data = jsonDecode(req.body.toString());
       getEndPoint = data["inference_job_token"].toString();
+      print("Stage2 completed");
       print(getEndPoint);
     } else {
       toast("Unable to generate speech");
@@ -77,6 +78,7 @@ class TTS extends ChangeNotifier {
         if (data["state"]["status"].toString() == "complete_success") {
           finalURL = googleAPIsStorageURL +
               data["state"]["maybe_public_bucket_wav_audio_path"].toString();
+          print("Stage3 completed");
           print(finalURL);
           break;
         }

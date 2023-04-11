@@ -44,13 +44,14 @@ class GPT3 extends ChangeNotifier {
       confirm = true;
       var message = ch["choices"][0]["message"];
       resText = message["content"].toString();
+      print("Stage1 completed");
       list.add({"role": "assistant", "content": resText});
     } else if (res.statusCode == 401) {
       resText = ch['error']['message'].toString();
     } else if (res.statusCode == 429) {
       confirm = true;
       resText = ch['error']['message'].toString();
-    }else {
+    } else {
       resText = res.statusCode.toString() + "Status Error";
     }
 

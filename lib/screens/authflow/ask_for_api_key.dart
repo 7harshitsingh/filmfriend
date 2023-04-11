@@ -93,7 +93,7 @@ class _AskforAPIState extends State<AskforAPI> {
               onTap: () {
                 APIkey = apiController.text.toString();
                 Provider.of<GPT3>(context, listen: false)
-                    .send("system", "Give a welcome greeting in one sentence",
+                    .send("system", "Welcome greeting in one sentence",
                         context)
                     .then(
                   (value) {

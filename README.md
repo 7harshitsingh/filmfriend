@@ -21,8 +21,8 @@ FilmFriend uses GenerativeAI to give you an illusive experience of interacting w
     <img src='images/2.jpg' height='448' width='210'>
     <img src='images/3.jpg' height='448' width='210'>
     <img src='images/4.jpg' height='448' width='210'>
+    <img src='images/5.jpg' height='448' width='210'>
 </div>
-
 
 
 

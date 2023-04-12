@@ -14,9 +14,8 @@
 FilmFriend uses GenerativeAI to give you an illusive experience of interacting with your favourite movie characters. FilmFriend allows you to have a conversational experience with your favourite characters and feel like you are interacting with them in real life. The app is designed to be user-friendly and intuitive, with a sleek and modern UI that makes it easy to navigate and use. Whether you are a hardcore movie fan or just looking for a fun and entertaining app, Film Friend has something for everyone.
 
 ## Screenshots
-
+Working Demo - https://github.com/7harshitsingh/filmfriend/blob/main/images/0.mp4
 <div align='center'>
-    <video src="https://github.com/7harshitsingh/filmfriend/blob/main/images/0.mp4" width="210" height="448" controls></video>
     <img src='images/1.jpg' height='448' width='210'>
     <img src='images/2.jpg' height='448' width='210'>
     <img src='images/3.jpg' height='448' width='210'>
